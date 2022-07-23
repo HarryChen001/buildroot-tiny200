@@ -14,7 +14,7 @@
 		ranges;
 
 		//bootargs = "console=ttyS0,115200 rootwait init=/preinit root=/dev/mtdblock2 rootfstype=squashfs overlayfsdev=/dev/mtdblock3";
-		bootargs = "console=tty0 console=ttyS0,115200 rootwait init=/sbin/init ubi.mtd=2 root=ubi0:rootfs rw rootfstype=ubifs";
+		bootargs = "console=tty0 console=ttyS0,115200 rootwait init=/linuxrc ubi.mtd=2 root=ubi0:rootfs rw rootfstype=ubifs";
 
 		simplefb_lcd: framebuffer-lcd0 {
 			compatible = "allwinner,simple-framebuffer",

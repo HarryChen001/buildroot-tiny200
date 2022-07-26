@@ -1,0 +1,13 @@
+diff --git a/include/configs/sunxi-common.h b/include/configs/sunxi-common.h
+index fd76c7d..eaaf1ff 100644
+--- a/include/configs/sunxi-common.h
++++ b/include/configs/sunxi-common.h
+@@ -304,7 +304,7 @@ extern int soft_i2c_gpio_scl;
+  * The amount of RAM to keep free at the top of RAM when relocating u-boot,
+  * to use as framebuffer. This must be a multiple of 4096.
+  */
+-#define CONFIG_SUNXI_MAX_FB_SIZE (16 << 20)
++#define CONFIG_SUNXI_MAX_FB_SIZE (3 << 20)
+ 
+ /* Do we want to initialize a simple FB? */
+ #define CONFIG_VIDEO_DT_SIMPLEFB

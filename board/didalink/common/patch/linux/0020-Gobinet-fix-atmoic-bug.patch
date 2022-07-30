@@ -1,0 +1,13 @@
+diff --git a/drivers/net/usb/GobiNet/QMIDevice.c b/drivers/net/usb/GobiNet/QMIDevice.c
+index f1c92649e..34af4c2d1 100644
+--- a/drivers/net/usb/GobiNet/QMIDevice.c
++++ b/drivers/net/usb/GobiNet/QMIDevice.c
+@@ -3340,7 +3340,7 @@ void DeregisterQMIDevice( sGobiUSBNet * pDev )
+    // but exists to prevent an infinate loop just in case.
+    for (tries = 0; tries < 30 * 100; tries++)
+    {
+-      int ref = atomic_read( &pDev->mQMIDev.mCdev.kobj.kref.refcount );
++      int ref = atomic_long_read((atomic_long_t*)(&pDev->mQMIDev.mCdev.kobj.kref.refcount));
+       if (ref > 1)
+       {
+          DBG( "cdev in use by %d tasks\n", ref - 1 ); 

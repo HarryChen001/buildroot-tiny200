@@ -14,7 +14,7 @@
 		ranges;
 
 		//bootargs = "console=ttyS0,115200 rootwait init=/preinit root=/dev/mtdblock2 rootfstype=squashfs overlayfsdev=/dev/mtdblock3";
-		bootargs = "console=tty0 console=ttyS0,115200 rootwait init=/linuxrc ubi.mtd=2 root=ubi0:rootfs rw rootfstype=ubifs";
+		bootargs = "console=tty0 console=ttyS0,115200 rootwait init=/linuxrc ubi.mtd=3 root=ubi0:rootfs rw rootfstype=ubifs";
 
 		simplefb_lcd: framebuffer-lcd0 {
 			compatible = "allwinner,simple-framebuffer",
@@ -100,17 +100,21 @@
 
 			partition@0 {
 				label = "u-boot";
-				reg = <0x000000 0x100000>;
+				reg = <0x000000 0x80000>;
 				read-only;
 			};
-
 			partition@1 {
+				label = "splash";
+				reg = <0x80000 0x80000>;
+			};
+
+			partition@2 {
 				label = "kernel";
 				reg = <0x100000 0x500000>;
 				read-only;
 			};
 
-			partition@2 {
+			partition@3 {
 				label = "rom";
 				reg = <0x600000 0x7a00000>;
 //				read-only;
@@ -142,6 +146,12 @@
 	status = "disabled";
 };
 
+&uart2 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&uart2_pe_pins>;
+        status = "okay";
+};
+
 &mmc0 {
 	status = "okay";
 	broken-cd;
@@ -160,13 +170,13 @@
 	status = "okay";
 };
 
-&cedar_ve {
-	status = "okay";
-};
+//&cedar_ve {
+//	status = "okay";
+//};
 
-&ion {
-	status = "okay";
-};
+//&ion {
+//	status = "okay";
+//};
 
 // &de {
 // 	status = "okay";

@@ -26,6 +26,14 @@
 			status = "disabled";
 		};
 	};
+	backlight {
+                compatible = "pwm-backlight";
+                pwms = <&pwm 1 500000 0>;
+                brightness-levels = <0 4 8 16 32 64 128 255>;
+                default-brightness-level = <6>;
+		status = "okay";
+        };
+
 
 	// panel: panel {
 	// 	compatible = "bananapi,s070wv20-ct16", "simple-panel";
@@ -169,6 +177,13 @@
 &usbphy {
 	status = "okay";
 };
+
+&pwm {
+        pinctrl-names = "default";
+        pinctrl-0 = <&pwm1_pe_pins>;
+        status = "okay";
+};
+
 
 //&cedar_ve {
 //	status = "okay";
